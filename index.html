@@ -323,6 +323,97 @@ footer .sub{font-family:"Jost";letter-spacing:.55em;font-size:13px;color:var(--m
 .rv{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.1,1)}
 .rv.in{opacity:1;transform:none}
 
+/* ================= PHONE LAYOUT (≤ 800px) ================= */
+@media (max-width:800px){
+  :root{--rail:20px}
+  .rail .t{font-size:9px;letter-spacing:.24em}
+  .cur{display:none}
+  body{cursor:auto}
+
+  /* hero: poster fits the screen, ticker board around it */
+  .hero{height:100svh;min-height:560px}
+  .hero-art{height:auto;width:min(78vw,60svh);aspect-ratio:3/4;margin-top:56px}
+  .wordmark{padding:70px 0 40px}
+  .hero-cap{left:14px;right:14px;bottom:14px;font-size:9px;letter-spacing:.2em}
+
+  /* ribbons */
+  .ribbons{height:150px;margin-top:20px}
+  .ribbon{height:46px}
+  .ribbon.a{top:24px}.ribbon.b{top:82px}
+  .ribbon .run{font-size:16px}
+  .ribbon.b .run{font-size:12px}
+  .ribbon .run span{padding:0 16px}
+
+  /* headline */
+  .statement{padding:70px 6vw 60px}
+  .statement h2{font-size:30px;line-height:1.35}
+  .statement p.it{font-size:17px}
+
+  /* artist */
+  .artist{gap:34px;padding:10px 7vw 80px}
+  .portrait{width:86%;margin:0 auto}
+  .artist .txt{text-align:center}
+  .artist h2{font-size:36px;margin:12px 0 10px}
+
+  /* collection: one picture per row, alternating sides */
+  .col-head{padding:0 6vw 18px;margin-bottom:34px}
+  .col-head h3{letter-spacing:.3em;font-size:11px}
+  .looks{grid-template-columns:1fr;gap:44px;padding:0 6vw 70px}
+  .look:nth-child(n){grid-column:auto;margin-top:0;width:86%}
+  .look:nth-child(even){margin-left:auto}
+  .meta .no{font-size:34px}
+  .meta h4{font-size:20px}
+  .col-credit{text-align:left;margin-top:-40px;padding:0 6vw 40px;font-size:10px}
+
+  /* shirt shop: shirts stacked */
+  .shop{padding:80px 6vw 90px}
+  .shop-head .logo{width:72%}
+  .shop-head h2{font-size:32px}
+  .shop-head p{font-size:17px}
+  .tees{grid-template-columns:1fr;gap:56px;margin-top:44px}
+  .tees .tee{margin-top:0!important;max-width:320px;width:100%;justify-self:center}
+  .tee .name{font-size:18px}
+  .order{margin-top:50px}
+  .order .ship{font-size:16px}
+  .order a{padding:15px 24px;font-size:16px}
+
+  /* indigo chapter */
+  .indigo{grid-template-columns:1fr;min-height:0}
+  .indigo .txt{padding:80px 7vw 30px}
+  .indigo h2{font-size:64px;margin:12px 0 18px}
+  .indigo p{font-size:16px}
+  .indigo .pic{height:70svh;margin:10px 7vw 70px}
+  .why{padding:20px 7vw 80px}
+  .why h3{font-size:28px;margin-bottom:40px}
+  .why ol{gap:34px}
+
+  /* candle / temple chapter */
+  .wax{grid-template-columns:1fr;min-height:0}
+  .wax::before{width:520px;height:520px;left:50%;top:30%}
+  .wax .pic{height:66svh;margin:60px 7vw 0}
+  .wax .txt{padding:36px 7vw 80px}
+  .wax h2{font-size:42px;white-space:normal;margin:12px 0 16px}
+  .wax p{font-size:16px}
+
+  /* works */
+  .duo{padding:60px 6vw 80px}
+  .duo .grid{grid-template-columns:1fr;gap:40px}
+  .duo .work{margin-top:0!important}
+
+  /* footer */
+  footer{padding:70px 6vw 40px}
+  footer .big{font-size:34px!important}
+  footer .sub{letter-spacing:.3em;font-size:11px}
+  .fb{margin-top:34px;padding:15px 34px}
+  .legal{margin-top:50px;letter-spacing:.2em;font-size:10px}
+
+  /* tap-to-zoom viewer */
+  .lb .stage{height:auto;width:92vw}
+  .lb img{width:100%;height:auto;max-height:84svh;object-fit:contain}
+  .lb .x{top:16px;right:18px}
+  .loupe{display:none}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
