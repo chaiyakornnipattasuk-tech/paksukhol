@@ -353,6 +353,8 @@ header.top nav a:nth-child(5){animation-delay:1.12s}
 .wordmark .tk:nth-child(7){animation-delay:1.47s}.wordmark .tk:nth-child(8){animation-delay:1.59s}
 .wordmark .tk:nth-child(9){animation-delay:1.71s}.wordmark .tk:nth-child(10){animation-delay:1.83s}
 .hero-cap{animation:popIn .8s 2.7s backwards}
+#intro,#introCloud,.hero-art img,header.top .th-name,header.top .brand,header.top nav a,.wordmark .tk,.hero-cap{animation-play-state:paused}
+html.go #intro,html.go #introCloud,html.go .hero-art img,html.go header.top .th-name,html.go header.top .brand,html.go header.top nav a,html.go .wordmark .tk,html.go .hero-cap{animation-play-state:running}
 
 /* ================= PHONE LAYOUT (≤ 800px) ================= */
 @media (max-width:800px){
@@ -639,10 +641,11 @@ const IMG_W=1500, IMG_H=2000;
 
 /* opening: white page + Thai cloud sweep plays once, then is removed */
 (function(){const a=document.getElementById('intro'),b=document.getElementById('introCloud');if(!a)return;
-  const done=()=>{a.remove();b.remove();document.documentElement.style.overflow=''};
+  const done=()=>{a.remove();b.remove();document.documentElement.style.overflow='';document.documentElement.classList.add('go')};
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
-  document.documentElement.style.overflow='hidden';scrollTo(0,0);
-  setTimeout(done,3400);
+  const html=document.documentElement;html.style.overflow='hidden';scrollTo(0,0);
+  let started=false;const go=()=>{if(started)return;started=true;html.classList.add('go');setTimeout(done,3400)};
+  if(document.readyState==='complete')go();else{addEventListener('load',go);setTimeout(go,4000)}
 })();
 
 
