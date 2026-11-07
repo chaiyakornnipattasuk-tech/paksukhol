@@ -323,6 +323,37 @@ footer .sub{font-family:"Jost";letter-spacing:.55em;font-size:13px;color:var(--m
 .rv{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.1,1)}
 .rv.in{opacity:1;transform:none}
 
+/* ================= OPENING: white page, Thai cloud (ลายเมฆไทย) flows top → bottom ================= */
+#intro{position:fixed;inset:0;z-index:300;background:#fff;pointer-events:none;clip-path:inset(0 0 0 0);
+  animation:introWipe 2.6s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes introWipe{to{clip-path:inset(100% 0 0 0)}}
+#introCloud{position:fixed;left:0;right:0;top:0;height:36vh;z-index:301;pointer-events:none;transform:translateY(-18vh);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120' fill='none' stroke='%23d9a300' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M0 86C30 86 38 62 62 62C84 62 90 82 76 88C66 92 60 80 68 76'/%3E%3Cpath d='M62 62C66 36 100 26 122 40C140 52 134 74 118 74C106 74 104 60 114 58'/%3E%3Cpath d='M122 40C138 18 176 20 186 44C194 64 176 76 164 68C156 62 162 52 170 56'/%3E%3Cpath d='M186 44C204 40 222 56 240 86'/%3E%3Cpath d='M0 86C60 100 180 100 240 86' stroke-width='1.2'/%3E%3C/svg%3E") 0 40%/340px 170px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120' fill='none' stroke='%2325287a' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M0 86C30 86 38 62 62 62C84 62 90 82 76 88C66 92 60 80 68 76'/%3E%3Cpath d='M62 62C66 36 100 26 122 40C140 52 134 74 118 74C106 74 104 60 114 58'/%3E%3Cpath d='M122 40C138 18 176 20 186 44C194 64 176 76 164 68C156 62 162 52 170 56'/%3E%3Cpath d='M186 44C204 40 222 56 240 86'/%3E%3C/svg%3E") 170px 74%/240px 120px repeat-x,
+    linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,250,232,.85) 30%,#fff 58%,#fff 100%);
+  animation:cloudFall 2.6s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes cloudFall{
+  0%{transform:translateY(-18vh);opacity:1}
+  85%{opacity:1}
+  100%{transform:translateY(82vh);opacity:0}}
+/* things ride in behind the cloud, once, on opening */
+@keyframes popIn{from{opacity:0;transform:translateY(-22px)}}
+@keyframes heroIn{from{opacity:0;transform:translateY(-46px) scale(.93)}}
+.hero-art img{animation:heroIn 1.3s 1.5s cubic-bezier(.2,.7,.1,1) backwards}
+header.top .th-name,header.top .brand{animation:popIn .8s 1s cubic-bezier(.2,.7,.1,1) backwards}
+header.top nav a{animation:popIn .7s backwards}
+header.top nav a:nth-child(1){animation-delay:.8s}header.top nav a:nth-child(2){animation-delay:.88s}
+header.top nav a:nth-child(3){animation-delay:.96s}header.top nav a:nth-child(4){animation-delay:1.04s}
+header.top nav a:nth-child(5){animation-delay:1.12s}
+.wordmark .tk{animation:popIn .8s backwards}
+.wordmark .tk:nth-child(1){animation-delay:.75s}.wordmark .tk:nth-child(2){animation-delay:.87s}
+.wordmark .tk:nth-child(3){animation-delay:.99s}.wordmark .tk:nth-child(4){animation-delay:1.11s}
+.wordmark .tk:nth-child(5){animation-delay:1.23s}.wordmark .tk:nth-child(6){animation-delay:1.35s}
+.wordmark .tk:nth-child(7){animation-delay:1.47s}.wordmark .tk:nth-child(8){animation-delay:1.59s}
+.wordmark .tk:nth-child(9){animation-delay:1.71s}.wordmark .tk:nth-child(10){animation-delay:1.83s}
+.hero-cap{animation:popIn .8s 2.7s backwards}
+
 /* ================= PHONE LAYOUT (≤ 800px) ================= */
 @media (max-width:800px){
   :root{--rail:20px}
@@ -418,6 +449,7 @@ footer .sub{font-family:"Jost";letter-spacing:.55em;font-size:13px;color:var(--m
 </style>
 </head>
 <body>
+<div id="intro" aria-hidden="true"></div><div id="introCloud" aria-hidden="true"></div>
 
 <div class="rail l"><div class="t" id="railL"></div></div>
 <div class="rail r"><div class="t" id="railR"></div></div>
@@ -604,6 +636,15 @@ footer .sub{font-family:"Jost";letter-spacing:.55em;font-size:13px;color:var(--m
 
 <script>
 const IMG_W=1500, IMG_H=2000;
+
+/* opening: white page + Thai cloud sweep plays once, then is removed */
+(function(){const a=document.getElementById('intro'),b=document.getElementById('introCloud');if(!a)return;
+  const done=()=>{a.remove();b.remove();document.documentElement.style.overflow=''};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
+  document.documentElement.style.overflow='hidden';scrollTo(0,0);
+  setTimeout(done,3400);
+})();
+
 
 /* rails: exactly her border device */
 document.getElementById('railL').innerHTML='NAKHON SAKON . <span class="th">นครสกล</span> . '.repeat(40);
