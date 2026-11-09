@@ -56,10 +56,10 @@ img{display:block;max-width:100%}
 
 /* ---------- header ---------- */
 header.top{position:fixed;top:0;left:var(--rail);right:var(--rail);z-index:45;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  padding:22px 38px;transition:background .4s, padding .4s}
-header.top.solid{background:rgba(248,240,224,.94);backdrop-filter:blur(10px);padding:14px 38px}
-.brand{display:block;width:170px;color:var(--navy)}
-.brand svg,.logo svg{display:block;width:100%;height:auto}
+  padding:10px 38px;transition:background .4s, padding .4s}
+header.top.solid{background:rgba(248,240,224,.94);backdrop-filter:blur(10px);padding:7px 38px}
+.brand{display:block;width:118px;color:var(--navy)}
+.brand svg,.logo svg{display:block;width:100%;height:auto;aspect-ratio:400/150}
 .th-name{font-size:14px;letter-spacing:.2em;color:var(--mute)}
 nav{display:flex;gap:34px;justify-content:flex-end}
 nav a{font-size:14px;letter-spacing:.14em;position:relative;white-space:nowrap}
@@ -68,18 +68,18 @@ nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1
 nav a:hover::after{right:0}
 /* icon menu: outline icons only — blue line, see-through middle, no circle behind */
 nav.icons{gap:22px;align-items:center}
-nav.icons a{display:grid;place-items:center;width:40px;height:40px;color:var(--navy);transition:transform .3s,color .3s}
+nav.icons a{display:grid;place-items:center;width:32px;height:32px;color:var(--navy);transition:transform .3s,color .3s}
 nav.icons a::after{content:none}
 nav.icons a:hover{transform:translateY(-2px);color:#14237a}
-nav.icons svg{width:26px;height:26px}
+nav.icons svg{width:20px;height:20px}
 nav.icons svg *{stroke-width:.9px}   /* hairline, fashion-label thin */
 header.top{column-gap:51px}
-@media (max-width:1100px){.brand{width:130px}nav.icons{gap:13px}nav.icons a{width:36px;height:36px}nav.icons svg{width:24px;height:24px}}
+@media (max-width:1100px){.brand{width:96px}nav.icons{gap:10px}nav.icons a{width:30px;height:30px}nav.icons svg{width:20px;height:20px}}
 @media (max-width:800px){
-  header.top,header.top.solid{grid-template-columns:auto 1fr;column-gap:12px;padding:12px 10px}
+  header.top,header.top.solid{grid-template-columns:auto 1fr;column-gap:12px;padding:7px 10px}
   .th-name{display:none}
-  .brand{width:92px}
-  nav.icons{gap:7px}nav.icons a{width:26px;height:26px}nav.icons svg{width:20px;height:20px}
+  .brand{width:72px}
+  nav.icons{gap:5px}nav.icons a{width:24px;height:24px}nav.icons svg{width:18px;height:18px}
 }
 
 main{margin:0 var(--rail)}
